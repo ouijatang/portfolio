@@ -10,3 +10,9 @@ public class Config_Drag_Inside_Horizontal
     public CharacterActor[] walkers;
     public float speedRatio;
 }
+[System.Serializable]
+public class Config_Drag_CreateCanvas
+{
+    public CanvasPosition pos;
+    public Sprite mainSp;
+}

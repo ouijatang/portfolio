@@ -2,14 +2,24 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CanvasPosition
+{
+    LT,
+    RT,
+    LB,
+    RB
+}
+
 public class CanvasSystem : MonoBehaviour
 {
     public static CanvasSystem instance;
 
-    public Image Canvas_LT;
-    public Image Canvas_RT;
-    public Image Canvas_LB;
-    public Image Canvas_RB;
+
+    public RectTransform globalParent;
+    public CanvasBehaviour canvas_LT;
+    public CanvasBehaviour canvas_RT;
+    public CanvasBehaviour canvas_LB;
+    public CanvasBehaviour canvas_RB;
 
     private void Awake()
     {
@@ -21,23 +31,30 @@ public class CanvasSystem : MonoBehaviour
 
     }
 
-    public Image GetCanvas(int i)
+    public CanvasBehaviour GetCanvas(CanvasPosition cp)
     {
-        switch (i)
+        switch (cp)
         {
-            case 1:
-                return Canvas_LT;
-
-            case 2:
-                return Canvas_RT;
-
-            case 3:
-                return Canvas_LB;
-
-            case 4:
-                return Canvas_RB;
+            case CanvasPosition.LT:
+                return canvas_LT;
+            case CanvasPosition.RT:
+                return canvas_RT;
+            case CanvasPosition.LB:
+                return canvas_LB;
+            case CanvasPosition.RB:
+                return canvas_RB;
         }
 
         return null;
+    }
+
+    public void HideCanvas(CanvasPosition cp)
+    {
+        var c = GetCanvas(cp);
+    }
+
+    public void ShowCanvas(CanvasPosition cp)
+    {
+        var c = GetCanvas(cp);
     }
 }

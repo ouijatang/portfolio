@@ -44,7 +44,7 @@ public class CharacterActor : ActorBehaviour
 
     void CheckWalk()
     {
-        Debug.Log("_totalWalkDelta" + _totalWalkDelta);
+        //Debug.Log("_totalWalkDelta" + _totalWalkDelta);
         if (isWalking)
             return;
 
@@ -53,10 +53,10 @@ public class CharacterActor : ActorBehaviour
             isWalking = true;
             isWalkingRight = false;
             int steps = Mathf.FloorToInt(_totalWalkDelta / walkDistance);
-            Debug.Log("steps" + steps);
+            //Debug.Log("steps" + steps);
             _walkDistanceLeft = walkDistance * steps;
             _totalWalkDelta -= walkDistance * steps;
-            Debug.Log("go left " + _walkDistanceLeft + " rest " + _totalWalkDelta);
+            //Debug.Log("go left " + _walkDistanceLeft + " rest " + _totalWalkDelta);
             return;
         }
 
@@ -65,10 +65,10 @@ public class CharacterActor : ActorBehaviour
             isWalking = true;
             isWalkingRight = true;
             int steps = Mathf.FloorToInt((-_totalWalkDelta) / walkDistance);
-            Debug.Log("steps" + steps);
+            //Debug.Log("steps" + steps);
             _walkDistanceLeft = walkDistance * steps;
             _totalWalkDelta += walkDistance * steps;
-            Debug.Log("go right " + _walkDistanceLeft + " rest " + _totalWalkDelta);
+            //Debug.Log("go right " + _walkDistanceLeft + " rest " + _totalWalkDelta);
             return;
         }
     }
