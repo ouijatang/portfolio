@@ -25,6 +25,7 @@ public class CameraSystem : MonoBehaviour
 
     public void SetToAxis1(Vector3 targetPos)
     {
+        com.SoundSystem.instance.Play("note1");
         cameraTrans.DOKill();
         cameraTrans.DORotate(axis1.eulerAngles, duration, RotateMode.Fast);
         cameraTrans.DOMove(targetPos, duration);
@@ -32,6 +33,7 @@ public class CameraSystem : MonoBehaviour
 
     public void SetToAxis2(Vector3 targetPos)
     {
+        com.SoundSystem.instance.Play("note2");
         cameraTrans.DOKill();
         cameraTrans.DORotate(axis2.eulerAngles, duration, RotateMode.Fast);
         cameraTrans.DOMove(targetPos, duration);
