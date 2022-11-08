@@ -13,6 +13,8 @@ public class CameraSystem : MonoBehaviour
     public float duration = 1.0f;
     public float distanceFromTarget = 10f;
 
+    public CubeAxis axis;
+
     private void Awake()
     {
         instance = this;
@@ -25,6 +27,8 @@ public class CameraSystem : MonoBehaviour
 
     public void SetToAxis1(Vector3 targetPos)
     {
+        axis = CubeAxis.One;
+
         com.SoundSystem.instance.Play("note1");
         cameraTrans.DOKill();
         cameraTrans.DORotate(axis1.eulerAngles, duration, RotateMode.Fast);
@@ -33,6 +37,8 @@ public class CameraSystem : MonoBehaviour
 
     public void SetToAxis2(Vector3 targetPos)
     {
+        axis = CubeAxis.Two;
+
         com.SoundSystem.instance.Play("note2");
         cameraTrans.DOKill();
         cameraTrans.DORotate(axis2.eulerAngles, duration, RotateMode.Fast);

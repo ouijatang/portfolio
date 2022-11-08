@@ -16,6 +16,8 @@ public class PlayerBehaviour : MonoBehaviour
     Vector3 _jumpUpward;
     Vector3 _jumpForwardDistance;
 
+    ClickBehaviour _lastCube;
+
     private void Awake()
     {
         instance = this;
@@ -24,6 +26,48 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TryJumpToCube(ClickBehaviour cube)
     {
+        if (cube == _lastCube)
+        {
+            return;
+        }
+        else
+        {
+            var endPos = cube.transform.position;
+            Vector3 endCubeUpward = cube.transform.right;
+            if (cube.cubeAxis == CubeAxis.One)
+            {
+                endPos += cube.transform.right * 0.5f;
+                endCubeUpward = cube.transform.right * 1f;
+            }
+            else if (cube.cubeAxis == CubeAxis.Two)
+            {
+                endPos += cube.transform.up * 0.5f;
+                endCubeUpward = cube.transform.up * 1f;
+            }
+
+            var fromPos = _lastCube.transform.position;
+            if (_lastCube.cubeAxis == CubeAxis.One)
+            {
+                fromPos += _lastCube.transform.right * 0.5f;
+            }
+            else if (_lastCube.cubeAxis == CubeAxis.Two)
+            {
+                fromPos += _lastCube.transform.up * 0.5f;
+            }
+
+            var dist = endPos - fromPos;
+            float angle = Vector3.Angle(dist, endCubeUpward);
+            float radian = angle * Mathf.Deg2Rad;
+            Debug.Log(angle + " angle in degree");
+            var sin = Mathf.Sin(radian);
+            var length = sin * dist.magnitude;
+            Debug.Log("origin length " + dist.magnitude);
+            Debug.Log("final length " + length);
+
+            if (length > 1.4f)
+                return;
+        }
+
         JumpToCube(cube);
     }
 
@@ -44,11 +88,13 @@ public class PlayerBehaviour : MonoBehaviour
             _jumpUpward = cube.transform.up * 1f;
             _jumpUpward += -cube.transform.forward * jumpOffset;
         }
+        _lastCube = cube;
     }
 
     public void PlaceOnCube(ClickBehaviour cube)
     {
         transform.position = GetIdealPosition(cube);
+        _lastCube = cube;
     }
 
     Vector3 GetIdealPosition(ClickBehaviour cube)
