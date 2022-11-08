@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using DG.Tweening;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -27,46 +25,42 @@ public class PlayerBehaviour : MonoBehaviour
     public void TryJumpToCube(ClickBehaviour cube)
     {
         if (cube == _lastCube)
-        {
             return;
-        }
-        else
+
+        var endPos = cube.transform.position;
+        Vector3 endCubeUpward = cube.transform.right;
+        if (cube.cubeAxis == CubeAxis.One)
         {
-            var endPos = cube.transform.position;
-            Vector3 endCubeUpward = cube.transform.right;
-            if (cube.cubeAxis == CubeAxis.One)
-            {
-                endPos += cube.transform.right * 0.5f;
-                endCubeUpward = cube.transform.right * 1f;
-            }
-            else if (cube.cubeAxis == CubeAxis.Two)
-            {
-                endPos += cube.transform.up * 0.5f;
-                endCubeUpward = cube.transform.up * 1f;
-            }
-
-            var fromPos = _lastCube.transform.position;
-            if (_lastCube.cubeAxis == CubeAxis.One)
-            {
-                fromPos += _lastCube.transform.right * 0.5f;
-            }
-            else if (_lastCube.cubeAxis == CubeAxis.Two)
-            {
-                fromPos += _lastCube.transform.up * 0.5f;
-            }
-
-            var dist = endPos - fromPos;
-            float angle = Vector3.Angle(dist, endCubeUpward);
-            float radian = angle * Mathf.Deg2Rad;
-            Debug.Log(angle + " angle in degree");
-            var sin = Mathf.Sin(radian);
-            var length = sin * dist.magnitude;
-            Debug.Log("origin length " + dist.magnitude);
-            Debug.Log("final length " + length);
-
-            if (length > 1.4f)
-                return;
+            endPos += cube.transform.right * 0.5f;
+            endCubeUpward = cube.transform.right * 1f;
         }
+        else if (cube.cubeAxis == CubeAxis.Two)
+        {
+            endPos += cube.transform.up * 0.5f;
+            endCubeUpward = cube.transform.up * 1f;
+        }
+
+        var fromPos = _lastCube.transform.position;
+        if (_lastCube.cubeAxis == CubeAxis.One)
+        {
+            fromPos += _lastCube.transform.right * 0.5f;
+        }
+        else if (_lastCube.cubeAxis == CubeAxis.Two)
+        {
+            fromPos += _lastCube.transform.up * 0.5f;
+        }
+
+        var dist = endPos - fromPos;
+        float angle = Vector3.Angle(dist, endCubeUpward);
+        float radian = angle * Mathf.Deg2Rad;
+        //Debug.Log(angle + " angle in degree");
+        var sin = Mathf.Sin(radian);
+        var length = sin * dist.magnitude;
+        //Debug.Log("origin length " + dist.magnitude);
+        //Debug.Log("final length " + length);
+
+        if (length > 1.4f)
+            return;
 
         JumpToCube(cube);
     }
@@ -116,23 +110,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void Update()
     {
         if (_jumpTimer <= 0)
-        {
-            //not in jumping state
-            return;
-        }
+            return; //not in jumping state
 
-        //_jumpStartPos 
-        //_jumpEndPos
-        //_jumpTimer 
-        //_jumpUpward
-        //public float jumpHeight;
-        //public float jumpDuration;
-        //_jumpForward
         _jumpTimer -= Time.deltaTime;
         if (_jumpTimer < 0)
-        {
             _jumpTimer = 0;
-        }
 
         var timeRatio = (1 - _jumpTimer / jumpDuration);
         var pos = _jumpStartPos;

@@ -15,7 +15,6 @@ public enum CubeAxis
     Two,
 }
 
-
 public class ClickBehaviour : MonoBehaviour
 {
     OutlineStyle _outlineStyle;
