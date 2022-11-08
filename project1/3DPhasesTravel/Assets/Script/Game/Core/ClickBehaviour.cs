@@ -75,9 +75,11 @@ public class ClickBehaviour : MonoBehaviour
                     break;
                 case CubeAxis.One:
                     CameraSystem.instance.SetToAxis1(CameraSystem.instance.GetCamPos(transform.position, cubeAxis));
+                    PlayerBehaviour.instance.TryJumpToCube(this);
                     break;
                 case CubeAxis.Two:
                     CameraSystem.instance.SetToAxis2(CameraSystem.instance.GetCamPos(transform.position, cubeAxis));
+                    PlayerBehaviour.instance.TryJumpToCube(this);
                     break;
             }
 
