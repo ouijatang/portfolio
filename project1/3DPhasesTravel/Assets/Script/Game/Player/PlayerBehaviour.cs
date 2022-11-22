@@ -85,6 +85,11 @@ public class PlayerBehaviour : MonoBehaviour
         _lastCube = cube;
     }
 
+    public Vector3 GetCurrentCubePositionIgnoreMovement()
+    {
+        return _lastCube.transform.position;
+    }
+
     public void PlaceOnCube(ClickBehaviour cube)
     {
         transform.position = GetIdealPosition(cube);

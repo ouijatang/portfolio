@@ -7,7 +7,6 @@ public class ClickFeedback : MonoBehaviour
 
     protected virtual void DoAnime()
     {
-
     }
 
     public void OnClicked()

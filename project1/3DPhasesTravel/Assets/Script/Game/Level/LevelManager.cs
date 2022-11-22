@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         PlayerBehaviour.instance.PlaceOnCube(startCube);
+        CameraSystem.instance.SetToAxis1(CameraSystem.instance.GetCamPos(PlayerBehaviour.instance.GetCurrentCubePositionIgnoreMovement(), CubeAxis.One));
     }
 
     // Update is called once per frame

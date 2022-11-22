@@ -41,10 +41,10 @@ public class ClickBehaviour : MonoBehaviour
                     outlineStyle = interactable ? OutlineStyle.Thin : OutlineStyle.None;
                     break;
                 case OutlineStyle.Thin:
-                    _outline.OutlineWidth = 2;
+                    _outline.OutlineWidth = 1;
                     break;
                 case OutlineStyle.Thick:
-                    _outline.OutlineWidth = 8;
+                    _outline.OutlineWidth = 5;
                     break;
             }
         }
@@ -76,13 +76,13 @@ public class ClickBehaviour : MonoBehaviour
                     if (CameraSystem.instance.axis == CubeAxis.One)
                         PlayerBehaviour.instance.TryJumpToCube(this);
 
-                    CameraSystem.instance.SetToAxis1(CameraSystem.instance.GetCamPos(transform.position, cubeAxis));
+                    CameraSystem.instance.SetToAxis1(CameraSystem.instance.GetCamPos(PlayerBehaviour.instance.GetCurrentCubePositionIgnoreMovement(), cubeAxis));
                     break;
                 case CubeAxis.Two:
                     if (CameraSystem.instance.axis == CubeAxis.Two)
                         PlayerBehaviour.instance.TryJumpToCube(this);
 
-                    CameraSystem.instance.SetToAxis2(CameraSystem.instance.GetCamPos(transform.position, cubeAxis));
+                    CameraSystem.instance.SetToAxis2(CameraSystem.instance.GetCamPos(PlayerBehaviour.instance.GetCurrentCubePositionIgnoreMovement(), cubeAxis));
                     break;
             }
 
