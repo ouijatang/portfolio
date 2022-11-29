@@ -11427,6 +11427,7 @@ GameObject:
   - component: {fileID: 1478969265}
   - component: {fileID: 1478969267}
   - component: {fileID: 1478969266}
+  - component: {fileID: 1478969268}
   m_Layer: 0
   m_Name: alley girls
   m_TagString: Untagged
@@ -11518,6 +11519,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1478969268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478969264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04ad2d7b8f2d4a40b16b20ba099149c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511476600
 GameObject:
   m_ObjectHideFlags: 0
@@ -11818,6 +11831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740365727}
   - component: {fileID: 1740365728}
+  - component: {fileID: 1740365729}
   m_Layer: 0
   m_Name: StorySystems
   m_TagString: Untagged
@@ -11856,6 +11870,35 @@ MonoBehaviour:
   canvas_RT: {fileID: 1264341432}
   canvas_LB: {fileID: 656144593}
   canvas_RB: {fileID: 1512485942}
+--- !u!114 &1740365729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740365726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7e0cc04d848ab43b117577c3d696fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList:
+  - tag: ui
+    siList:
+    - name: dragStart
+      ac: {fileID: 8300000, guid: b23c46879d94ced40869ecd98f36f0e0, type: 3}
+    - name: dragEnd
+      ac: {fileID: 8300000, guid: e6935862065292046af876432705e44f, type: 3}
+    - name: createCanvas
+      ac: {fileID: 8300000, guid: 2a47d8d0e98f5bc48883d66bc5b733a7, type: 3}
+    - name: canvas hide
+      ac: {fileID: 8300000, guid: b7fd67a76491d434399170f41a845e2c, type: 3}
+    - name: click
+      ac: {fileID: 8300000, guid: 4de6c4546991ed6498e042be970f2796, type: 3}
+  - tag: game
+    siList:
+    - name: step
+      ac: {fileID: 8300000, guid: 1d0450e43795a4146a5bf6da88dce3f4, type: 3}
 --- !u!1 &1756427564
 GameObject:
   m_ObjectHideFlags: 0

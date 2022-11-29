@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
-//using com;
+using com;
 
 public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IPointerClickHandler
 {
@@ -116,6 +116,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
             _isDraging = true;
             _dragStartMousePos = eventData.position;
             _dragStartAnchoredPos = _rect.anchoredPosition;
+            SoundSystem.instance.Play("dragStart");
         }
         else if (interactionType == InteractionType.Drag_CreateCanvas)
         {
@@ -126,6 +127,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
             _dragStartAnchoredPos = _rect.anchoredPosition;
             var blinker = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos).blinker;
             blinker.SetActive(true);
+            SoundSystem.instance.Play("dragStart");
         }
     }
 
@@ -150,6 +152,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                     w.Walk(delta.x);
 
                 _isDraging = false;
+                SoundSystem.instance.Play("dragEnd");
             }
         }
         else if (interactionType == InteractionType.Drag_CreateCanvas)
@@ -160,6 +163,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                 c.SetBg(config_Drag_CreateCanvas.mainSp);
                 c.Show();
                 _isDraging = false;
+                SoundSystem.instance.Play("createCanvas");
             }
         }
     }
