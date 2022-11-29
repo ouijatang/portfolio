@@ -10,11 +10,13 @@ public class CharacterActor : ActorBehaviour
     bool isWalkingRight;
     public float walkDistance;
     float _walkDistanceLeft;
+    ActorAnimationBehaviour _actorAnimation;
 
     private void Awake()
     {
         _totalWalkDelta = 0;
         _rect = GetComponent<RectTransform>();
+        _actorAnimation = GetComponent<ActorAnimationBehaviour>();
     }
 
     private void Update()
@@ -50,6 +52,7 @@ public class CharacterActor : ActorBehaviour
 
         if (_totalWalkDelta > walkDistance)
         {
+            _actorAnimation?.StartWalk();
             isWalking = true;
             isWalkingRight = false;
             int steps = Mathf.FloorToInt(_totalWalkDelta / walkDistance);
@@ -62,6 +65,7 @@ public class CharacterActor : ActorBehaviour
 
         if (_totalWalkDelta < -walkDistance)
         {
+            _actorAnimation?.StartWalk();
             isWalking = true;
             isWalkingRight = true;
             int steps = Mathf.FloorToInt((-_totalWalkDelta) / walkDistance);
@@ -71,5 +75,7 @@ public class CharacterActor : ActorBehaviour
             //Debug.Log("go right " + _walkDistanceLeft + " rest " + _totalWalkDelta);
             return;
         }
+
+        _actorAnimation?.StopWalk();
     }
 }
