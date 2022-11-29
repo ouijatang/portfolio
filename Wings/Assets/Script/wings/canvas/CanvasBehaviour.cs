@@ -30,7 +30,7 @@ public class CanvasBehaviour : MonoBehaviour
         blinker.SetActive(false);
         _cg.interactable = true;
         _cg.DOKill();
-        _cg.DOFade(1, 1.5f);
+        _cg.DOFade(1, 2.0f);
     }
 
     public void Hide()

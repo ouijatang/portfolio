@@ -132,6 +132,8 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
         //Debug.Log("OnPointerUp");
+        if (!_isDraging)
+            return;
         EndDrag();
     }
 
