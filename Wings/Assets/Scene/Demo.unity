@@ -10545,8 +10545,9 @@ GameObject:
   - component: {fileID: 1112899837}
   - component: {fileID: 1112899836}
   - component: {fileID: 1112899835}
+  - component: {fileID: 1112899838}
   m_Layer: 5
-  m_Name: obj-newcanvas
+  m_Name: obj-ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10569,8 +10570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1111, y: 100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 1208.8, y: 162}
+  m_SizeDelta: {x: 2000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112899835
 MonoBehaviour:
@@ -10594,6 +10595,10 @@ MonoBehaviour:
   config_Drag_CreateCanvas:
     pos: 1
     mainSp: {fileID: 21300000, guid: e29f3ee4839de48479d3d618ac0a2b4f, type: 3}
+  config_Hover_ChangeMat:
+    normal: {fileID: 0}
+    hover: {fileID: 0}
+    img: {fileID: 0}
 --- !u!114 &1112899836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10614,9 +10619,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4bd978e3ffa1fa34e9b94bcd3df69303, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 122da72c4a1abf54fb166f4276713ce1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10632,6 +10637,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112899833}
   m_CullTransparentMesh: 1
+--- !u!114 &1112899838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112899833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667e438ae46f1c445b00c4818395aa58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: 20
+  config_Drag_Inside_Horizontal:
+    stepLength: 0
+    minX: 0
+    maxX: 0
+    walkers: []
+    speedRatio: 0
+  config_Drag_CreateCanvas:
+    pos: 0
+    mainSp: {fileID: 0}
+  config_Hover_ChangeMat:
+    normal: {fileID: 0}
+    hover: {fileID: 2100000, guid: 4d19b54a0e8311e419969975a45cf3f6, type: 2}
+    img: {fileID: 1112899836}
 --- !u!1 &1139930044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10734,6 +10765,10 @@ MonoBehaviour:
   config_Drag_CreateCanvas:
     pos: 0
     mainSp: {fileID: 0}
+  config_Hover_ChangeMat:
+    normal: {fileID: 0}
+    hover: {fileID: 0}
+    img: {fileID: 0}
 --- !u!114 &1139930049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12176,6 +12211,7 @@ GameObject:
   - component: {fileID: 2091815692}
   - component: {fileID: 2091815691}
   - component: {fileID: 2091815693}
+  - component: {fileID: 2091815694}
   m_Layer: 5
   m_Name: mainImg
   m_TagString: Untagged
@@ -12265,3 +12301,18 @@ MonoBehaviour:
   config_Drag_CreateCanvas:
     pos: 0
     mainSp: {fileID: 0}
+  config_Hover_ChangeMat:
+    normal: {fileID: 0}
+    hover: {fileID: 0}
+    img: {fileID: 0}
+--- !u!210 &2091815694
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091815689}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1

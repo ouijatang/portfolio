@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Config_Drag_Inside_Horizontal
@@ -10,9 +10,18 @@ public class Config_Drag_Inside_Horizontal
     public CharacterActor[] walkers;
     public float speedRatio;
 }
+
 [System.Serializable]
 public class Config_Drag_CreateCanvas
 {
     public CanvasPosition pos;
     public Sprite mainSp;
+}
+
+[System.Serializable]
+public class Config_Hover_ChangeMat
+{
+    public Material normal;
+    public Material hover;
+    public Image img;
 }

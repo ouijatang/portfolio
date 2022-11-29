@@ -6,13 +6,6 @@ using com;
 
 public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IPointerClickHandler
 {
-    public enum HoverType
-    {
-        None = 0,
-        Highlight = 1,
-
-    }
-
     public enum InteractionType
     {
         None = 0,
@@ -20,6 +13,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
         Drag_Inside_Vertical = 2,
         Drag_Inside_All = 3,
         Drag_CreateCanvas = 12,
+        Hover_ChangeMat=20,
     }
 
     RectTransform _rect;
@@ -30,6 +24,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
     public Config_Drag_Inside_Horizontal config_Drag_Inside_Horizontal;
     public Config_Drag_CreateCanvas config_Drag_CreateCanvas;
+    public Config_Hover_ChangeMat  config_Hover_ChangeMat;
 
     protected override void Awake()
     {
@@ -91,12 +86,21 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (interactionType == InteractionType.Hover_ChangeMat)
+        {
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.hover;
+        }
         //Debug.Log("OnPointerEnter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("OnPointerExit");
+        if (interactionType == InteractionType.Hover_ChangeMat)
+        {
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.normal;
+        }
+
         if (interactionType == InteractionType.Drag_Inside_Horizontal)
         {
             EndDrag();
