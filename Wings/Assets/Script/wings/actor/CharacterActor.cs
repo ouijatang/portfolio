@@ -78,4 +78,9 @@ public class CharacterActor : ActorBehaviour
 
         _actorAnimation?.StopWalk();
     }
+
+    public void StopWalk()
+    {
+        _actorAnimation?.StopWalk();
+    }
 }

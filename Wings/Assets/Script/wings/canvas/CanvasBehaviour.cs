@@ -30,14 +30,14 @@ public class CanvasBehaviour : MonoBehaviour
         blinker.SetActive(false);
         _cg.interactable = true;
         _cg.DOKill();
-        _cg.DOFade(1, 2.0f);
+        _cg.DOFade(1, 2.5f);
     }
 
     public void Hide()
     {
         _cg.interactable = false;
         _cg.DOKill();
-        _cg.DOFade(0, 1.5f);
+        _cg.DOFade(0, 2.5f);
     }
 
     public void SetBg(Sprite sp)
