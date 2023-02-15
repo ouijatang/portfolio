@@ -10369,6 +10369,7 @@ GameObject:
   - component: {fileID: 479589331}
   - component: {fileID: 479589333}
   - component: {fileID: 479589332}
+  - component: {fileID: 479589334}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -10392,7 +10393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -147.87, y: -249.1}
+  m_AnchoredPosition: {x: -230, y: -354}
   m_SizeDelta: {x: 2222, y: 4126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479589332
@@ -10433,6 +10434,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479589330}
   m_CullTransparentMesh: 1
+--- !u!114 &479589334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479589330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3846bf66003cd49a11edd109385576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freq: 1
+  offset: 0
+  amplitude: 2
+  xAxis: 0
+  yAxis: 1
+  zAxis: 0
+  localPos: 1
+  startPlay: 1
 --- !u!1 &602588768
 GameObject:
   m_ObjectHideFlags: 0
@@ -17044,9 +17065,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7a04a9063c57a4d8f9711b719bc147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAnim: 1
+  moveAnim: 2
   fadeAnim: 1
-  shakeStrength: 3
+  moveStrength: 0.5
   stayTime: 4
   img: {fileID: 1214534217}
 --- !u!114 &1214534217
@@ -17843,7 +17864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAnim: 1
   fadeAnim: 1
-  shakeStrength: 3
+  moveStrength: 5
   stayTime: 4
   img: {fileID: 1389580639}
 --- !u!114 &1389580639

@@ -20,7 +20,7 @@ public class TextBubbleBehaviour : MonoBehaviour
     public MoveAnim moveAnim;
     public FadeAnim fadeAnim;
 
-    public float shakeStrength = 4;
+    public float moveStrength = 4;
 
     public float stayTime;
     public Image img;
@@ -33,11 +33,11 @@ public class TextBubbleBehaviour : MonoBehaviour
             case MoveAnim.None:
                 break;
             case MoveAnim.Shake:
-                transform.DOShakePosition(stayTime, shakeStrength, 8).SetEase(Ease.InCubic);
+                transform.DOShakePosition(stayTime, moveStrength, 8).SetEase(Ease.InOutCubic);
                 break;
             case MoveAnim.Float:
                 var y = transform.position.y;
-                transform.DOMoveY(y + 15, stayTime).SetEase(Ease.InOutCubic);
+                transform.DOMoveY(y + moveStrength, stayTime).SetEase(Ease.InOutCubic);
                 break;
         }
 
