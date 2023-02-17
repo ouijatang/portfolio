@@ -3,17 +3,18 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 using com;
+using DG.Tweening;
 
 public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IPointerClickHandler
 {
     public enum InteractionType
     {
         None = 0,
+        Drag_Ladder_ToRight = 100,
         Drag_Inside_Horizontal = 1,
         Drag_Inside_Vertical = 2,
         Drag_Inside_All = 3,
-        Drag_CreateCanvas = 12,
-        Hover_ChangeMat=20,
+        Hover_ChangeMat = 20,
     }
 
     RectTransform _rect;
@@ -24,12 +25,22 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
     public Config_Drag_Inside_Horizontal config_Drag_Inside_Horizontal;
     public Config_Drag_CreateCanvas config_Drag_CreateCanvas;
-    public Config_Hover_ChangeMat  config_Hover_ChangeMat;
+    public Config_Hover_ChangeMat config_Hover_ChangeMat;
 
+    Vector2 _startAnchoredPos;
+    Transform _originParent;
     protected override void Awake()
     {
         base.Awake();
         _rect = GetComponent<RectTransform>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        _originParent = transform.parent;
+        _startAnchoredPos = _rect.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -54,13 +65,6 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                 targetPos.x = Mathf.Clamp(targetPos.x, cfg.minX, cfg.maxX);
                 _rect.anchoredPosition = targetPos;
             }
-            else if (interactionType == InteractionType.Drag_CreateCanvas)
-            {
-                //  var cfg = config_Drag_CreateCanvas;
-                //  var delta = eventData.position - _dragStartMousePos;
-                //  var targetPos = _dragStartAnchoredPos + delta;
-                //  _rect.anchoredPosition = targetPos;
-            }
         }
     }
 
@@ -68,7 +72,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
     {
         if (_isDraging)
         {
-            if (interactionType == InteractionType.Drag_CreateCanvas)
+            if (interactionType == InteractionType.Drag_Ladder_ToRight)
             {
                 var mousePos = Input.mousePosition;
                 var cfg = config_Drag_CreateCanvas;
@@ -103,11 +107,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
         if (interactionType == InteractionType.Drag_Inside_Horizontal)
         {
-            EndDrag();
-        }
-        else if (interactionType == InteractionType.Drag_CreateCanvas)
-        {
-            //EndDrag();
+            //EndDrag(eventData);
         }
     }
 
@@ -122,7 +122,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
             _dragStartAnchoredPos = _rect.anchoredPosition;
             SoundSystem.instance.Play("dragStart");
         }
-        else if (interactionType == InteractionType.Drag_CreateCanvas)
+        else if (interactionType == InteractionType.Drag_Ladder_ToRight)
         {
             _isDraging = true;
             _dragStartMousePos = eventData.position;
@@ -132,19 +132,25 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
             var blinker = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos).blinker;
             blinker.SetActive(true);
             SoundSystem.instance.Play("dragStart");
+
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.hover;
         }
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerUp");
+
         if (!_isDraging)
             return;
-        EndDrag();
+
+        EndDrag(eventData);
     }
 
-    void EndDrag()
+    void EndDrag(PointerEventData eventData)
     {
+        Debug.Log("EndDrag");
+        Debug.Log(eventData.position);
+
         if (interactionType == InteractionType.Drag_Inside_Horizontal)
         {
             if (_isDraging)
@@ -159,15 +165,31 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                 SoundSystem.instance.Play("dragEnd");
             }
         }
-        else if (interactionType == InteractionType.Drag_CreateCanvas)
+        else if (interactionType == InteractionType.Drag_Ladder_ToRight)
         {
-            if (_isDraging)
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.normal;
+            _isDraging = false;
+            SoundSystem.instance.Play("dragEnd");
+            var suc = false;
+            var blinker = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos).blinker;
+            blinker.SetActive(false);
+            if (eventData.position.y > 540 && eventData.position.x > 960)
             {
-                var c = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos);
-                c.SetBg(config_Drag_CreateCanvas.mainSp);
-                c.Show();
-                _isDraging = false;
+                suc = true;
+            }
+            if (suc)
+            {
                 SoundSystem.instance.Play("createCanvas");
+                var c = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos);
+                //c.SetBg(config_Drag_CreateCanvas.mainSp);
+                c.Show();
+                GetComponent<Image>().DOFade(0, 1).OnComplete(() => { Destroy(gameObject); });
+                this.enabled = false;
+            }
+            else
+            {
+                _rect.SetParent(_originParent);
+                _rect.anchoredPosition = _startAnchoredPos;
             }
         }
     }
