@@ -42,11 +42,13 @@ public class Event_GirlShowSquare : EventTrigger
     IEnumerator ZoomOut(float delay)
     {
         yield return new WaitForSeconds(delay);
-        wholeImgRect.DOAnchorPos(new Vector2(-914, -82), 3f);
-        wholeImgRect.DOScale(0.7f, 3f);
+        horrorAmbience.Play();
+
+        yield return new WaitForSeconds(1.1f);
+        wholeImgRect.DOAnchorPos(new Vector2(-914, -82), 4f);
+        wholeImgRect.DOScale(0.7f, 4f);
 
         townSquare.ShowPeople();
-        horrorAmbience.Play();
     }
 
     IEnumerator EnableInteractions(float delay)

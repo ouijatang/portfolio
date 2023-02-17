@@ -33624,8 +33624,8 @@ MonoBehaviour:
   ladder: {fileID: 1112899836}
   bubbleTalk1: {fileID: 1389580636}
   t1: 0.35
-  t2: 4.5
-  t3: 7
+  t2: 5
+  t3: 8
   horrorAmbience: {fileID: 1082417750}
 --- !u!1 &1811863594
 GameObject:
