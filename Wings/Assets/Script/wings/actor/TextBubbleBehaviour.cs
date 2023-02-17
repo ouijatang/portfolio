@@ -37,7 +37,7 @@ public class TextBubbleBehaviour : MonoBehaviour
                 break;
             case MoveAnim.Float:
                 var y = transform.position.y;
-                transform.DOMoveY(y + moveStrength, stayTime).SetEase(Ease.InOutCubic);
+                transform.DOMoveY(y + moveStrength, stayTime).SetEase(Ease.OutCubic);
                 break;
         }
 

@@ -53,5 +53,10 @@ public class Event_GirlShowSquare : EventTrigger
     {
         yield return new WaitForSeconds(delay);
 
+        var cos = ladder.gameObject.GetComponents<CanvasObject>();
+        foreach (var co in cos)
+        {
+            co.enabled = true;
+        }
     }
 }
