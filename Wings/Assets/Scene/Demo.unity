@@ -10716,16 +10716,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702319132}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8181818, y: 1.8181818, z: 1}
   m_Children: []
-  m_Father: {fileID: 1511476601}
-  m_RootOrder: 4
+  m_Father: {fileID: 781839347}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -323.46, y: -178.5}
+  m_AnchoredPosition: {x: -679.0182, y: -288.18176}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &702319134
@@ -10967,7 +10967,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.55, y: 0.55, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 702319133}
   m_Father: {fileID: 1511476601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10990,11 +10991,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freq: 0.5
   offset: 0
-  amplitude: 0.1
+  amplitude: 7
   xAxis: 0
   yAxis: 1
   zAxis: 0
-  localPos: 0
+  localPos: 1
   startPlay: 1
 --- !u!114 &781839349
 MonoBehaviour:
@@ -17955,11 +17956,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freq: 0.5
   offset: 0
-  amplitude: 0.1
+  amplitude: 7
   xAxis: 0
   yAxis: 1
   zAxis: 0
-  localPos: 0
+  localPos: 1
   startPlay: 1
 --- !u!1 &1348001048
 GameObject:
@@ -23512,7 +23513,6 @@ RectTransform:
   - {fileID: 786430373}
   - {fileID: 2142160500}
   - {fileID: 1342322212}
-  - {fileID: 702319133}
   m_Father: {fileID: 2087745677}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23577,8 +23577,8 @@ MonoBehaviour:
   startScale: 2.25
   endScale: 1
   t_bridge: 3
-  t_girls: 4
-  t_scissors: 5
+  t_girls: 3.5
+  t_scissors: 4
   imgBridge: {fileID: 781839349}
   imgGirls: {fileID: 1342322213}
   imgScissors: {fileID: 702319134}

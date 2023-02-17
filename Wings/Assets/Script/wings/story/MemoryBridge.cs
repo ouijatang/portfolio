@@ -47,18 +47,18 @@ public class MemoryBridge : MonoBehaviour
     IEnumerator ShowBridge()
     {
         yield return new WaitForSeconds(t_bridge);
-        imgBridge.DOFade(1, 1);
+        imgBridge.DOFade(1, 2);
     }
 
     IEnumerator ShowGirls()
     {
         yield return new WaitForSeconds(t_girls);
-        imgGirls.DOFade(1, 1);
+        imgGirls.DOFade(1, 2);
     }
 
     IEnumerator ShowScissors()
     {
         yield return new WaitForSeconds(t_scissors);
-        imgScissors.DOFade(1, 1);
+        imgScissors.DOFade(1, 2);
     }
 }
