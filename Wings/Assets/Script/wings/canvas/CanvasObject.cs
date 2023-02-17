@@ -185,6 +185,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                 c.Show();
                 GetComponent<Image>().DOFade(0, 1).OnComplete(() => { Destroy(gameObject); });
                 this.enabled = false;
+                MemoryBridge.instance.StartShowMemory();
             }
             else
             {
