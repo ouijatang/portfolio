@@ -9,13 +9,13 @@ public class GameStart_girlsRun : MonoBehaviour
     public CharacterActor walker;
 
     public float t1 = 0.8f;
-    public float t2 = 2.8f;
+    //public float t2 = 2.8f;
     public float t3 = 3.5f;
 
     void Start()
     {
         StartCoroutine(Bubble1(t1));
-        StartCoroutine(Bubble2(t2));
+        //StartCoroutine(Bubble2(t2));
         StartCoroutine(EnableWalk(t3));
     }
 

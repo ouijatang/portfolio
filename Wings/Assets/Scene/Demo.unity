@@ -10371,7 +10371,7 @@ GameObject:
   - component: {fileID: 479589332}
   - component: {fileID: 479589334}
   m_Layer: 5
-  m_Name: Image
+  m_Name: banner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17050,7 +17050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1000, y: 333}
+  m_AnchoredPosition: {x: -957.1, y: 258.8}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214534216
@@ -17847,7 +17847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -950, y: 333}
+  m_AnchoredPosition: {x: 1709, y: 246}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389580638
@@ -17862,9 +17862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7a04a9063c57a4d8f9711b719bc147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAnim: 1
+  moveAnim: 2
   fadeAnim: 1
-  moveStrength: 5
+  moveStrength: 1
   stayTime: 4
   img: {fileID: 1389580639}
 --- !u!114 &1389580639
@@ -33496,6 +33496,9 @@ MonoBehaviour:
   squareBackground: {fileID: 741848200}
   wholeImgRect: {fileID: 2091815690}
   townSquare: {fileID: 741848202}
+  bubbleTalk1: {fileID: 1389580636}
+  t1: 0.35
+  t2: 4.5
 --- !u!1 &1811863594
 GameObject:
   m_ObjectHideFlags: 0
@@ -38929,8 +38932,7 @@ MonoBehaviour:
   dragBg: {fileID: 2091815693}
   walker: {fileID: 1139930049}
   t1: 1
-  t2: 5.25
-  t3: 6
+  t3: 5
 --- !u!1 &2136518598
 GameObject:
   m_ObjectHideFlags: 0
