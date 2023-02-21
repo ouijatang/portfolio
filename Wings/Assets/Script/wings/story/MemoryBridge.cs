@@ -21,6 +21,25 @@ public class MemoryBridge : MonoBehaviour
     public Image imgGirls;
     public Image imgScissors;
 
+    public float zoomDelay = 4f;
+
+    public float bubble_Passager_Talk1_delay = 0.35f;
+    public GameObject bubble_Passager_Talk1;
+    public float bubble_Passager_Talk2_delay = 0.35f;
+    public GameObject bubble_Passager_Talk2;
+    public float bubble_Passager_Talk3_delay = 0.35f;
+    public GameObject bubble_Passager_Talk3;
+    public float bubble_Passager_Talk4_delay = 0.35f;
+    public GameObject bubble_Passager_Talk4;
+    public float bubble_Passager_Talk5_delay = 0.35f;
+    public GameObject bubble_Passager_Talk5;
+    public float bubble_Girl_Talk1_delay = 0.35f;
+    public GameObject bubble_Girl_Talk1;
+    public float bubble_Girl_Talk2_delay = 0.35f;
+    public GameObject bubble_Girl_Talk2;
+    public float bubble_Girl_Talk3_delay = 0.35f;
+    public GameObject bubble_Girl_Talk3;
+
     private void Awake()
     {
         instance = this;
@@ -31,10 +50,38 @@ public class MemoryBridge : MonoBehaviour
         rect.anchoredPosition = startAnchoredPos;
         rect.transform.localScale = startScale * Vector3.one;
 
+        StartCoroutine(StartPassagerChat());
+    }
+
+    IEnumerator StartPassagerChat()
+    {
+        yield return new WaitForSeconds(bubble_Passager_Talk1_delay);
+        bubble_Passager_Talk1.SetActive(true);
+        yield return new WaitForSeconds(bubble_Passager_Talk2_delay);
+        bubble_Passager_Talk2.SetActive(true);
+        yield return new WaitForSeconds(bubble_Passager_Talk3_delay);
+        bubble_Passager_Talk3.SetActive(true);
+        yield return new WaitForSeconds(bubble_Passager_Talk4_delay);
+        bubble_Passager_Talk4.SetActive(true);
+        yield return new WaitForSeconds(bubble_Passager_Talk5_delay);
+        bubble_Passager_Talk5.SetActive(true);
+
+        yield return new WaitForSeconds(zoomDelay);
         StartCoroutine(Zoom());
         StartCoroutine(ShowBridge());
         StartCoroutine(ShowGirls());
         StartCoroutine(ShowScissors());
+        StartCoroutine(StartGirlChat());
+    }
+
+    IEnumerator StartGirlChat()
+    {
+        yield return new WaitForSeconds(bubble_Girl_Talk1_delay);
+        bubble_Girl_Talk1.SetActive(true);
+        yield return new WaitForSeconds(bubble_Girl_Talk2_delay);
+        bubble_Girl_Talk2.SetActive(true);
+        yield return new WaitForSeconds(bubble_Girl_Talk3_delay);
+        bubble_Girl_Talk3.SetActive(true);
     }
 
     IEnumerator Zoom()
