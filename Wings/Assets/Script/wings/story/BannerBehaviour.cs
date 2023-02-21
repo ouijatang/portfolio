@@ -11,6 +11,8 @@ public class BannerBehaviour : MonoBehaviour
     public MoveSinBehaviour msb;
     public CanvasGroup cgFin;
     public CanvasGroup cgLogo;
+    public GameObject[] peopleToHide;
+
     public float delay1;
     public float delay2;
     public float delay3;
@@ -40,10 +42,13 @@ public class BannerBehaviour : MonoBehaviour
         originalImg.DOFade(0, 0.35f);
         yield return new WaitForSeconds(delay4);
         finalImg.DOFade(1, 0.35f);
+        foreach (var p in peopleToHide)
+            p.SetActive(false);
+
         SoundSystem.instance.Play(postDropSound);
         yield return new WaitForSeconds(delay5);
         Debug.Log("Finish");
-        cgFin.DOFade(1, 5);
-        cgLogo.DOFade(1, 2.5f).SetDelay(2.5f);
+        cgFin.DOFade(1, 3);
+        cgLogo.DOFade(1, 1.5f).SetDelay(1.5f);
     }
 }
