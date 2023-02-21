@@ -11,6 +11,7 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
     {
         None = 0,
         Drag_Ladder_ToRight = 100,
+        Drag_Scissors = 101,
         Drag_Inside_Horizontal = 1,
         Drag_Inside_Vertical = 2,
         Drag_Inside_All = 3,
@@ -22,6 +23,10 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
     bool _isDraging;
     Vector2 _dragStartAnchoredPos;
     Vector2 _dragStartMousePos;
+    public RectTransform[] scissorTargets;
+    public Vector2 scissorTargetsOffset;
+    public float radius;
+    public BannerBehaviour banner;
 
     public Config_Drag_Inside_Horizontal config_Drag_Inside_Horizontal;
     public Config_Drag_CreateCanvas config_Drag_CreateCanvas;
@@ -29,6 +34,8 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
     Vector2 _startAnchoredPos;
     Transform _originParent;
+  
+
     protected override void Awake()
     {
         base.Awake();
@@ -73,6 +80,14 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
         if (_isDraging)
         {
             if (interactionType == InteractionType.Drag_Ladder_ToRight)
+            {
+                var mousePos = Input.mousePosition;
+                var cfg = config_Drag_CreateCanvas;
+                var delta = (Vector2)mousePos - _dragStartMousePos;
+                var targetPos = _dragStartAnchoredPos + delta;
+                _rect.anchoredPosition = targetPos;
+            }
+            else if (interactionType == InteractionType.Drag_Scissors)
             {
                 var mousePos = Input.mousePosition;
                 var cfg = config_Drag_CreateCanvas;
@@ -135,11 +150,23 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
             config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.hover;
         }
+        else if (interactionType == InteractionType.Drag_Scissors)
+        {
+            _isDraging = true;
+            _dragStartMousePos = eventData.position;
+
+            _rect.SetParent(CanvasSystem.instance.globalParent);
+            _dragStartAnchoredPos = _rect.anchoredPosition;
+            var blinker = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos).blinker;
+            blinker.SetActive(true);
+            SoundSystem.instance.Play("dragStart");
+
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.hover;
+        }
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-
         if (!_isDraging)
             return;
 
@@ -148,8 +175,8 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
 
     void EndDrag(PointerEventData eventData)
     {
-        Debug.Log("EndDrag");
-        Debug.Log(eventData.position);
+        Debug.LogWarning("EndDrag");
+        //Debug.Log(eventData.position);
 
         if (interactionType == InteractionType.Drag_Inside_Horizontal)
         {
@@ -186,6 +213,46 @@ public class CanvasObject : UIBehaviour, IEventSystemHandler, IPointerDownHandle
                 GetComponent<Image>().DOFade(0, 1).OnComplete(() => { Destroy(gameObject); });
                 this.enabled = false;
                 MemoryBridge.instance.StartShowMemory();
+            }
+            else
+            {
+                _rect.SetParent(_originParent);
+                _rect.anchoredPosition = _startAnchoredPos;
+            }
+        }
+        else if (interactionType == InteractionType.Drag_Scissors)
+        {
+            var pointerPos = eventData.position;
+            //Debug.Log(pointerPos);
+            pointerPos.y = pointerPos.y - Screen.height;
+            Debug.Log(pointerPos);
+            var suc = false;
+            foreach (var t in scissorTargets)
+            {
+                Debug.Log(t.anchoredPosition);
+                var centerPos = scissorTargetsOffset + t.anchoredPosition;
+                var dist = Vector2.Distance(pointerPos, centerPos);
+                Debug.Log("dist " + dist);
+                if (dist < radius)
+                {
+                    suc = true;
+                    break;
+                }
+            }
+
+            config_Hover_ChangeMat.img.material = config_Hover_ChangeMat.normal;
+            _isDraging = false;
+            SoundSystem.instance.Play("dragEnd");
+
+            var blinker = CanvasSystem.instance.GetCanvas(config_Drag_CreateCanvas.pos).blinker;
+            blinker.SetActive(false);
+
+            //how suc???
+            if (suc)
+            {
+                GetComponent<Image>().DOFade(0, 1).OnComplete(() => { Destroy(gameObject); });
+                this.enabled = false;
+                banner.Cut();
             }
             else
             {

@@ -39,6 +39,9 @@ public class MemoryBridge : MonoBehaviour
     public GameObject bubble_Girl_Talk2;
     public float bubble_Girl_Talk3_delay = 0.35f;
     public GameObject bubble_Girl_Talk3;
+    public float enableInteractionDelay = 3f;
+
+    public CanvasObject scissorsCo;
 
     private void Awake()
     {
@@ -59,6 +62,7 @@ public class MemoryBridge : MonoBehaviour
         bubble_Passager_Talk1.SetActive(true);
         yield return new WaitForSeconds(bubble_Passager_Talk2_delay);
         bubble_Passager_Talk2.SetActive(true);
+        com.SoundSystem.instance.Play("crowd");
         yield return new WaitForSeconds(bubble_Passager_Talk3_delay);
         bubble_Passager_Talk3.SetActive(true);
         yield return new WaitForSeconds(bubble_Passager_Talk4_delay);
@@ -82,6 +86,13 @@ public class MemoryBridge : MonoBehaviour
         bubble_Girl_Talk2.SetActive(true);
         yield return new WaitForSeconds(bubble_Girl_Talk3_delay);
         bubble_Girl_Talk3.SetActive(true);
+        yield return new WaitForSeconds(enableInteractionDelay);
+        EnableInteraction();
+    }
+
+    void EnableInteraction()
+    {
+        scissorsCo.enabled = true;
     }
 
     IEnumerator Zoom()
