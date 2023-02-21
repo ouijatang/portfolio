@@ -425,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133.7, y: 96.6}
+  m_AnchoredPosition: {x: 128, y: 83}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239403435
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAnim: 1
   fadeAnim: 1
-  moveStrength: 1
+  moveStrength: 2
   stayTime: 2.5
   img: {fileID: 239403436}
 --- !u!114 &239403436
@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187, y: 177.9}
+  m_AnchoredPosition: {x: 195, y: 167}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245552311
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAnim: 1
   fadeAnim: 1
-  moveStrength: 1
+  moveStrength: 2
   stayTime: 3
   img: {fileID: 245552312}
 --- !u!114 &245552312
@@ -5568,7 +5568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.1, y: 213.1}
+  m_AnchoredPosition: {x: 195, y: 59}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291200015
@@ -5585,7 +5585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAnim: 1
   fadeAnim: 1
-  moveStrength: 1
+  moveStrength: 2
   stayTime: 2.5
   img: {fileID: 291200016}
 --- !u!114 &291200016
@@ -17572,7 +17572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317, y: -168}
+  m_AnchoredPosition: {x: 762, y: 96}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1189353152
@@ -23695,7 +23695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.2, y: 129.1}
+  m_AnchoredPosition: {x: 24, y: 110}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436448324
@@ -23712,7 +23712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAnim: 1
   fadeAnim: 1
-  moveStrength: 1
+  moveStrength: 2
   stayTime: 2.5
   img: {fileID: 1436448325}
 --- !u!114 &1436448325
@@ -24055,22 +24055,22 @@ MonoBehaviour:
   imgBridge: {fileID: 781839349}
   imgGirls: {fileID: 1342322213}
   imgScissors: {fileID: 702319134}
-  zoomDelay: 4
-  bubble_Passager_Talk1_delay: 0.35
+  zoomDelay: 1
+  bubble_Passager_Talk1_delay: 2
   bubble_Passager_Talk1: {fileID: 1821116023}
-  bubble_Passager_Talk2_delay: 0.35
+  bubble_Passager_Talk2_delay: 4.5
   bubble_Passager_Talk2: {fileID: 245552309}
-  bubble_Passager_Talk3_delay: 0.35
+  bubble_Passager_Talk3_delay: 0.7
   bubble_Passager_Talk3: {fileID: 291200013}
-  bubble_Passager_Talk4_delay: 0.35
+  bubble_Passager_Talk4_delay: 0.7
   bubble_Passager_Talk4: {fileID: 1436448322}
-  bubble_Passager_Talk5_delay: 0.35
+  bubble_Passager_Talk5_delay: 0.7
   bubble_Passager_Talk5: {fileID: 239403433}
-  bubble_Girl_Talk1_delay: 1
+  bubble_Girl_Talk1_delay: 6.5
   bubble_Girl_Talk1: {fileID: 1798824669}
-  bubble_Girl_Talk2_delay: 0.35
+  bubble_Girl_Talk2_delay: 4.25
   bubble_Girl_Talk2: {fileID: 2086359098}
-  bubble_Girl_Talk3_delay: 0.35
+  bubble_Girl_Talk3_delay: 4.25
   bubble_Girl_Talk3: {fileID: 1189353150}
 --- !u!1 &1512485937
 GameObject:
@@ -34352,7 +34352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317, y: -168}
+  m_AnchoredPosition: {x: 447, y: -15}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798824671
@@ -34625,7 +34625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37.1, y: 149.9}
+  m_AnchoredPosition: {x: 2, y: 121}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821116025
@@ -34643,7 +34643,7 @@ MonoBehaviour:
   moveAnim: 1
   fadeAnim: 1
   moveStrength: 2
-  stayTime: 4
+  stayTime: 4.25
   img: {fileID: 1821116026}
 --- !u!114 &1821116026
 MonoBehaviour:
@@ -39887,7 +39887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317, y: -168}
+  m_AnchoredPosition: {x: 762, y: 96}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086359100
@@ -40175,6 +40175,7 @@ MonoBehaviour:
   walker: {fileID: 1139930049}
   t1: 1
   t3: 5
+  testCanvas: {fileID: 1264341432}
 --- !u!1 &2136518598
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,17 @@ public class GameStart_girlsRun : MonoBehaviour
     //public float t2 = 2.8f;
     public float t3 = 3.5f;
 
+    public CanvasBehaviour testCanvas;
+
     void Start()
     {
+        if (testCanvas != null)
+        {
+            testCanvas.Show();
+            MemoryBridge.instance.StartShowMemory();
+            return;
+        }
+
         StartCoroutine(Bubble1(t1));
         //StartCoroutine(Bubble2(t2));
         StartCoroutine(EnableWalk(t3));

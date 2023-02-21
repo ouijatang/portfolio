@@ -33,7 +33,7 @@ public class TextBubbleBehaviour : MonoBehaviour
             case MoveAnim.None:
                 break;
             case MoveAnim.Shake:
-                transform.DOShakePosition(stayTime, moveStrength, 8).SetEase(Ease.InOutCubic);
+                transform.DOShakePosition(stayTime, moveStrength, 10, 90, false, false).SetEase(Ease.InOutCubic);
                 break;
             case MoveAnim.Float:
                 var y = transform.position.y;
