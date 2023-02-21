@@ -9,7 +9,8 @@ public class BannerBehaviour : MonoBehaviour
     public Image originalImg;
     public Image finalImg;
     public MoveSinBehaviour msb;
-
+    public CanvasGroup cgFin;
+    public CanvasGroup cgLogo;
     public float delay1;
     public float delay2;
     public float delay3;
@@ -42,6 +43,7 @@ public class BannerBehaviour : MonoBehaviour
         SoundSystem.instance.Play(postDropSound);
         yield return new WaitForSeconds(delay5);
         Debug.Log("Finish");
+        cgFin.DOFade(1, 5);
+        cgLogo.DOFade(1, 2.5f).SetDelay(2.5f);
     }
-
 }
